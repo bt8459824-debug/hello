@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #050b0a;
+            --card-bg: #0b1513;
+            --accent-color: #10b981;
+            --accent-hover: #059669;
+            --accent-glow: rgba(16, 185, 129, 0.12);
+            --text-main: #f0fdf4;
+            --text-muted: #64748b;
+            --input-bg: #070e0d;
+            --border-color: #162a25;
+            --border-focus: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.06) 0px, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(5, 150, 105, 0.04) 0px, transparent 40%);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2.25rem;
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                0 0 1px 1px rgba(255, 255, 255, 0.03) inset;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .container:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 
+                0 30px 60px -12px rgba(0, 0, 0, 0.8),
+                0 0 40px 0 rgba(16, 185, 129, 0.03),
+                0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 30%, #a7f3d0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #8dd3b5;
+            letter-spacing: 0.3px;
+        }
+
+        input[type="number"], input[type="text"] {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+        }
+
+        input[type="number"]:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+            background-color: #0a1311;
+        }
+
+        input::placeholder {
+            color: #2c423c;
+        }
+
+        /* Clean utilities for dynamic field states */
+        .hidden-field {
+            display: flex;
+            opacity: 1;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 10px;
+            color: #030706;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            padding: 0.85rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Message Sender</h1>
+         <form action="/login" method="post">
+            <div class="form-group">
+                <label for="phone">Person's Number</label>
+                <input type="number" name="phone_number" id = "phone" placeholder="e.g. 9876543210">
+            </div>
+
+            <div class="form-group hidden-field" id="countField">
+                <label for="messageCount">Number of Messages</label>
+                <input type="number" name = "number_of_messages"id="messageCount" placeholder="e.g. 5">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" name = "message" id="message" placeholder="Type your message here...">
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
