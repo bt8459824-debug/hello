@@ -1,2 +1,3 @@
-Flask
-Selenium
+flask
+selenium
+gunicorn
